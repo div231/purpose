@@ -208,7 +208,7 @@
         /* Success card */
         .success-card {
             display: none;
-            background: white;
+            background: linear-gradient(135deg, #fff5f7 0%, #ffe5ec 100%);
             padding: 50px;
             border-radius: 30px;
             box-shadow: 0 20px 60px rgba(255, 107, 157, 0.4);
@@ -218,6 +218,7 @@
             position: relative;
             z-index: 10;
             animation: slideIn 0.5s ease-out;
+            border: 3px solid rgba(255, 182, 193, 0.3);
         }
 
         .success-card.show {
@@ -227,39 +228,66 @@
         .success-title {
             font-size: 4em;
             color: #ff1744;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             animation: bounceSuccess 1s ease infinite;
+            text-shadow: 3px 3px 6px rgba(255, 23, 68, 0.2);
+            font-weight: bold;
         }
 
         @keyframes bounceSuccess {
             0%, 100% {
-                transform: translateY(0);
+                transform: translateY(0) scale(1);
             }
             50% {
-                transform: translateY(-20px);
+                transform: translateY(-15px) scale(1.05);
             }
         }
 
         .success-message {
-            font-size: 2em;
-            color: #d81b60;
+            font-size: 2.2em;
+            background: linear-gradient(45deg, #ff1744, #f50057, #e91e63);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
             margin-bottom: 30px;
             font-weight: bold;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            animation: glow 2s ease-in-out infinite;
+        }
+
+        @keyframes glow {
+            0%, 100% {
+                filter: drop-shadow(0 0 5px rgba(255, 23, 68, 0.3));
+            }
+            50% {
+                filter: drop-shadow(0 0 15px rgba(255, 23, 68, 0.6));
+            }
         }
 
         .image-container {
             width: 100%;
-            max-width: 400px;
-            height: 400px;
+            max-width: 500px;
+            height: 500px;
             margin: 0 auto;
-            border-radius: 20px;
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 15px 40px rgba(255, 23, 68, 0.3);
             background: linear-gradient(135deg, #ffc3d7, #ff6b9d);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
+            border: 5px solid rgba(255, 255, 255, 0.5);
+            animation: photoFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes photoFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
         }
 
         .image-container img {
@@ -279,6 +307,49 @@
             font-weight: bold;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
             line-height: 1.6;
+        }
+
+        /* Floating hearts around image */
+        .floating-heart {
+            position: absolute;
+            font-size: 2em;
+            animation: floatHeart 4s ease-in-out infinite;
+            pointer-events: none;
+        }
+
+        .floating-heart:nth-child(1) {
+            top: -20px;
+            left: -20px;
+            animation-delay: 0s;
+        }
+
+        .floating-heart:nth-child(2) {
+            top: -20px;
+            right: -20px;
+            animation-delay: 0.5s;
+        }
+
+        .floating-heart:nth-child(3) {
+            bottom: -20px;
+            left: -20px;
+            animation-delay: 1s;
+        }
+
+        .floating-heart:nth-child(4) {
+            bottom: -20px;
+            right: -20px;
+            animation-delay: 1.5s;
+        }
+
+        @keyframes floatHeart {
+            0%, 100% {
+                transform: translateY(0) scale(1);
+                opacity: 0.8;
+            }
+            50% {
+                transform: translateY(-15px) scale(1.2);
+                opacity: 1;
+            }
         }
 
         /* Play button overlay */
@@ -364,6 +435,10 @@
         <div class="success-title">YESSSS! 🎉💕</div>
         <div class="success-message">Wuvvvv Youuuu 💖</div>
         <div class="image-container">
+            <span class="floating-heart">💕</span>
+            <span class="floating-heart">❤️</span>
+            <span class="floating-heart">💖</span>
+            <span class="floating-heart">💗</span>
             <!-- Replace the src below with your own image URL -->
             <img id="coupleImage" src="" alt="Our Picture" style="display: none;">
             <div class="placeholder-text" id="placeholderText">
@@ -492,7 +567,7 @@
         });
 
         // If you want to add an image, uncomment the line below and replace with your image URL
-        coupleImage.src = 'abx.jpeg';
+        // coupleImage.src = 'YOUR_IMAGE_URL_HERE';
     </script>
 </body>
 </html>
